@@ -1,0 +1,77 @@
+[gd_scene load_steps=11 format=3 uid="uid://bho5fq00rbvwe"]
+
+[ext_resource type="Texture2D" uid="uid://cie40iaoyol8k" path="res://Sprites/chara_01_anim.png" id="1_7bmfq"]
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_x2swm"]
+[ext_resource type="AudioStream" uid="uid://b036xfbih15hb" path="res://Sounds/jump.wav" id="3_l7sy6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ptyae"]
+atlas = ExtResource("1_7bmfq")
+region = Rect2(18, 0, 18, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lgfg5"]
+atlas = ExtResource("1_7bmfq")
+region = Rect2(0, 0, 18, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p72bg"]
+atlas = ExtResource("1_7bmfq")
+region = Rect2(18, 0, 18, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ntur"]
+atlas = ExtResource("1_7bmfq")
+region = Rect2(36, 0, 18, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f3lbh"]
+atlas = ExtResource("1_7bmfq")
+region = Rect2(54, 0, 18, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5djew"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ptyae")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lgfg5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p72bg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ntur")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f3lbh")
+}],
+"loop": true,
+"name": &"run",
+"speed": 8.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xtaea"]
+radius = 8.0
+height = 20.0
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(0, -2)
+script = ExtResource("1_x2swm")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, 0)
+sprite_frames = SubResource("SpriteFrames_5djew")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_xtaea")
+
+[node name="JumpAudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_l7sy6")
+volume_db = -3.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+position_smoothing_speed = 2.0
