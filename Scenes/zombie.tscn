@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dhm72r0yoo6rm"]
+[gd_scene load_steps=11 format=3 uid="uid://dhm72r0yoo6rm"]
 
 [ext_resource type="Texture2D" uid="uid://pduq22q475o4" path="res://Sprites/zombie_01_run.png" id="1_5xhqx"]
 [ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_i5o7v"]
@@ -52,16 +52,30 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wv2wp"]
-radius = 8.0
+radius = 7.0
 height = 20.0
 
-[node name="Zombie" type="CharacterBody2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_be0t7"]
+radius = 8.0
+height = 22.0
+
+[node name="Zombie" type="CharacterBody2D" groups=["Enemies"]]
 position = Vector2(0, -2)
 script = ExtResource("1_i5o7v")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -2)
 sprite_frames = SubResource("SpriteFrames_8h54y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
 shape = SubResource("CapsuleShape2D_wv2wp")
+
+[node name="Hitbox" type="Area2D" parent="."]
+position = Vector2(0, -2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CapsuleShape2D_be0t7")
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

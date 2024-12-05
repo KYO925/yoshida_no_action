@@ -13,8 +13,15 @@ func _physics_process(delta: float) -> void:
 	if direction:
 		sprite.play("run")
 		velocity.x = direction * speed
+	
 	if is_on_wall():
-		sprite.flip_h = direction > 0
 		direction = get_wall_normal().x
+		sprite.flip_h = direction > 0
 
 	move_and_slide()
+
+
+func _on_hitbox_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Players"):
+		sprite.flip_h = direction > 0
+		direction = get_wall_normal().x

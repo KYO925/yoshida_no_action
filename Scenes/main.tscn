@@ -23,7 +23,7 @@ tile_map_data = PackedByteArray("AAATAA4AAAAAAAEAAAASAA4AAAAAAAEAAAARAA4AAAAAAAE
 tile_set = ExtResource("1_kkbaa")
 
 [node name="Player" parent="." instance=ExtResource("2_3xgm4")]
-position = Vector2(135, 146)
+position = Vector2(136, 184)
 
 [node name="Coin" parent="." instance=ExtResource("3_wwnnv")]
 position = Vector2(48, 440)
@@ -133,12 +133,6 @@ position = Vector2(336, 200)
 [node name="MovingPlatform" parent="." instance=ExtResource("5_2mwmf")]
 position = Vector2(368, 200)
 
-[node name="MovingPlatform2" parent="." instance=ExtResource("5_2mwmf")]
-position = Vector2(400, 200)
-
-[node name="Path2D" parent="MovingPlatform2" index="0"]
-curve = SubResource("Curve2D_bi5d8")
-
 [node name="MovingPlatform3" parent="." instance=ExtResource("5_2mwmf")]
 position = Vector2(-192, 456)
 speed = 100
@@ -149,5 +143,7 @@ curve = SubResource("Curve2D_bi5d8")
 [node name="Zombie" parent="." instance=ExtResource("7_ykmi0")]
 position = Vector2(136, 248)
 
-[editable path="MovingPlatform2"]
+[node name="Zombie2" parent="." instance=ExtResource("7_ykmi0")]
+position = Vector2(248, 184)
+
 [editable path="MovingPlatform3"]

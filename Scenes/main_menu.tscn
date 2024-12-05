@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=4 uid="uid://ds7t7bksmphrm"]
+
+[ext_resource type="PackedScene" uid="uid://biickaobpqsi2" path="res://Scenes/background.tscn" id="1_tpxhw"]
+[ext_resource type="TileSet" uid="uid://55fe2j7tn2vy" path="res://main.tres" id="2_ppitn"]
+[ext_resource type="PackedScene" uid="uid://dhm72r0yoo6rm" path="res://Scenes/zombie.tscn" id="3_fpyx2"]
+[ext_resource type="PackedScene" uid="uid://kxl0km5o8gv2" path="res://Scenes/main_menu_yoshida.tscn" id="4_dgj0i"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1fjkg"]
+font_size = 24
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+
+[node name="MainMenu" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -83.0
+offset_right = 83.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="TitleText" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+text = "よしだのアクション"
+label_settings = SubResource("LabelSettings_1fjkg")
+
+[node name="StartButton" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+text = "Start"
+
+[node name="QuitButton" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[node name="Background" parent="." instance=ExtResource("1_tpxhw")]
+
+[node name="ParallaxLayer2" parent="Background" index="1"]
+position = Vector2(0, 24)
+
+[node name="TileMap" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAA0AAAAAAAAAAAABAA0AAAAAAAAAAAACAA0AAAAAAAAAAAADAA0AAAAAAAAAAAAEAA0AAAAAAAAAAAAFAA0AAAAAAAAAAAAGAA0AAAAAAAAAAAAHAA0AAAAAAAAAAAAIAA0AAAAAAAAAAAAJAA0AAAAAAAAAAAAKAA0AAAAAAAAAAAALAA0AAAAAAAAAAAAMAA0AAAAAAAAAAAAPAA0AAAAAAAAAAAAQAA0AAAAAAAAAAAARAA0AAAAAAAAAAAASAA0AAAAAAAAAAAATAA0AAAAAAAAAAAATAA4AAAAAAAEAAAASAA4AAAAAAAEAAAARAA4AAAAAAAEAAAAQAA4AAAAAAAEAAAAPAA4AAAAAAAEAAAAOAA4AAAAAAAEAAAADAA4AAAAAAAEAAAACAA4AAAAAAAEAAAABAA4AAAAAAAEAAAAAAA4AAAAAAAEAAAAEAA4AAAAAAAEAAAAFAA4AAAAAAAEAAAAGAA4AAAAAAAEAAAAHAA4AAAAAAAEAAAAIAA4AAAAAAAEAAAAJAA4AAAAAAAEAAAAKAA4AAAAAAAEAAAALAA4AAAAAAAEAAAAMAA4AAAAAAAEAAAANAA4AAAAAAAEAAAAUAA0AAAAAAAAAAAAVAA0AAAAAAAAAAAAWAA0AAAAAAAAAAAAXAA0AAAAAAAAAAAD//w0AAAAAAAAAAAD+/w0AAAAAAAAAAAD9/w0AAAAAAAAAAAD8/w0AAAAAAAAAAAAXAA4AAAAAAAEAAAAWAA4AAAAAAAEAAAAVAA4AAAAAAAEAAAAUAA4AAAAAAAEAAAD+/w4AAAAAAAEAAAD9/w4AAAAAAAEAAAD8/w4AAAAAAAEAAAD//w4AAAAAAAEAAAAYAA4AAAAAAAEAAAAZAA4AAAAAAAEAAAAaAA4AAAAAAAEAAAAaAA0AAAAAAAAAAAANAA0AAAAAAAAAAAAOAA0AAAAAAAAAAAA=")
+tile_set = ExtResource("2_ppitn")
+
+[node name="Zombie" parent="." instance=ExtResource("3_fpyx2")]
+position = Vector2(344, 200)
+
+[node name="MainMenuYoshida" parent="." instance=ExtResource("4_dgj0i")]
+position = Vector2(88, 200)
+
+[editable path="Background"]
