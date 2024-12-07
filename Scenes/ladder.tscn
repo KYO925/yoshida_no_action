@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://deveh3ayvw0y4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h1sek"]
+size = Vector2(4, 144)
+
+[node name="Ladder" type="Area2D" groups=["Ladder"]]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_h1sek")

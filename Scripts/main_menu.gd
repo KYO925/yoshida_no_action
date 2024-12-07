@@ -1,10 +1,7 @@
-extends Node
+extends Node2D
 
 
-var coins = 0
-var current_stage = 1
-var main_menu_path = "res://Scenes/main_menu.tscn"
-
+@export var stage_number_scene: PackedScene
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -16,9 +13,9 @@ func _process(delta: float) -> void:
 	pass
 
 
-func add_coins(n=1):
-	coins += n
+func _on_start_button_pressed() -> void:
+	get_tree().change_scene_to_packed(stage_number_scene)
 
 
-func set_next_stage(n):
-	current_stage = n
+func _on_quit_button_pressed() -> void:
+	get_tree().quit()

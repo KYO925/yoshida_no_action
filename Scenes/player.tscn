@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bho5fq00rbvwe"]
+[gd_scene load_steps=15 format=3 uid="uid://bho5fq00rbvwe"]
 
 [ext_resource type="Texture2D" uid="uid://cie40iaoyol8k" path="res://Sprites/chara_01_anim.png" id="1_7bmfq"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_x2swm"]
@@ -73,6 +73,11 @@ height = 20.0
 radius = 8.0
 height = 22.0
 
+[sub_resource type="LabelSettings" id="LabelSettings_2o64v"]
+font_size = 24
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+
 [node name="Player" type="CharacterBody2D" groups=["Players"]]
 position = Vector2(0, -2)
 script = ExtResource("1_x2swm")
@@ -102,4 +107,37 @@ position = Vector2(0, -2)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CapsuleShape2D_tlg3g")
 
+[node name="GameOverMenu" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOverMenu"]
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -83.0
+offset_right = 83.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="TitleText" type="Label" parent="GameOverMenu/VBoxContainer"]
+layout_mode = 2
+text = "GameOver"
+label_settings = SubResource("LabelSettings_2o64v")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RestartButton" type="Button" parent="GameOverMenu/VBoxContainer"]
+layout_mode = 2
+text = "Restart"
+
+[node name="MainMenuButton" type="Button" parent="GameOverMenu/VBoxContainer"]
+layout_mode = 2
+text = "Main Menu"
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="area_exited" from="Hitbox" to="." method="_on_hitbox_area_exited"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="pressed" from="GameOverMenu/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="GameOverMenu/VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
