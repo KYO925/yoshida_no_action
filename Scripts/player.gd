@@ -7,6 +7,7 @@ extends CharacterBody2D
 @onready var sprite = $AnimatedSprite2D
 @onready var jump_audio = $JumpAudioStreamPlayer2D
 @onready var game_over_menu = $GameOverMenu
+@onready var coin_counter = $HUD/CoinCounter
 
 var is_alive = true
 var is_on_ladder = false
@@ -46,6 +47,10 @@ func _physics_process(delta: float) -> void:
 			
 
 	move_and_slide()
+
+
+func update_coin_counter():
+	coin_counter.text = str(ScoreManager.coins)
 
 
 func death():

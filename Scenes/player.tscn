@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://bho5fq00rbvwe"]
+[gd_scene load_steps=29 format=3 uid="uid://bho5fq00rbvwe"]
 
 [ext_resource type="Texture2D" uid="uid://cie40iaoyol8k" path="res://Sprites/chara_01_anim.png" id="1_7bmfq"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_x2swm"]
 [ext_resource type="Texture2D" uid="uid://dfyehnv25pe1u" path="res://Sprites/chara_01_down.png" id="2_fx7bv"]
 [ext_resource type="AudioStream" uid="uid://b036xfbih15hb" path="res://Sounds/jump.wav" id="3_l7sy6"]
+[ext_resource type="Texture2D" uid="uid://dh4ck4vbo7jad" path="res://Sprites/coin.png" id="5_7clia"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ixmuk"]
 atlas = ExtResource("2_fx7bv")
@@ -78,6 +79,98 @@ font_size = 24
 outline_size = 8
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_55o0c"]
+atlas = ExtResource("5_7clia")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fowyl"]
+atlas = ExtResource("5_7clia")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_77ln3"]
+atlas = ExtResource("5_7clia")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gnkbl"]
+atlas = ExtResource("5_7clia")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_38an8"]
+atlas = ExtResource("5_7clia")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_netj1"]
+atlas = ExtResource("5_7clia")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mqjre"]
+atlas = ExtResource("5_7clia")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kii7j"]
+atlas = ExtResource("5_7clia")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jb401"]
+atlas = ExtResource("5_7clia")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_osblw"]
+atlas = ExtResource("5_7clia")
+region = Rect2(144, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fqo8t"]
+atlas = ExtResource("5_7clia")
+region = Rect2(160, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ck1ko"]
+atlas = ExtResource("5_7clia")
+region = Rect2(176, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ip68m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_55o0c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fowyl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_77ln3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gnkbl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_38an8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_netj1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mqjre")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kii7j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jb401")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_osblw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fqo8t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ck1ko")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
 [node name="Player" type="CharacterBody2D" groups=["Players"]]
 position = Vector2(0, -2)
 script = ExtResource("1_x2swm")
@@ -99,7 +192,14 @@ volume_db = -3.0
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -2)
 position_smoothing_enabled = true
-position_smoothing_speed = 2.0
+position_smoothing_speed = 3.0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.15
+drag_top_margin = 0.3
+drag_right_margin = 0.15
+drag_bottom_margin = 0.15
+editor_draw_drag_margin = true
 
 [node name="Hitbox" type="Area2D" parent="."]
 position = Vector2(0, -2)
@@ -135,6 +235,25 @@ text = "Restart"
 [node name="MainMenuButton" type="Button" parent="GameOverMenu/VBoxContainer"]
 layout_mode = 2
 text = "Main Menu"
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="CoinCounter" type="Label" parent="HUD"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -48.0
+offset_top = 4.0
+offset_right = -8.0
+offset_bottom = 27.0
+grow_horizontal = 0
+text = "0"
+horizontal_alignment = 2
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HUD/CoinCounter"]
+position = Vector2(3, 12)
+sprite_frames = SubResource("SpriteFrames_ip68m")
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="area_exited" from="Hitbox" to="." method="_on_hitbox_area_exited"]
