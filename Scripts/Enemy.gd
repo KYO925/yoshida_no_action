@@ -25,3 +25,5 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Players"):
 		sprite.flip_h = direction > 0
 		direction = get_wall_normal().x
+		if body.has_method("death"):
+			body.death()

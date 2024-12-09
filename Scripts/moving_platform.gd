@@ -2,6 +2,7 @@ extends Node2D
 
 
 @export var speed = 50
+@export var is_working = true
 
 @onready var path_follow = $Path2D/PathFollow2D
 
@@ -13,4 +14,13 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	path_follow.progress += speed * delta
+	if is_working:
+		path_follow.progress += speed * delta
+
+
+func turn_on():
+	is_working = true
+
+
+func turn_off():
+	is_working = false

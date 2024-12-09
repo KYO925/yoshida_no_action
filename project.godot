@@ -32,6 +32,7 @@ window/stretch/mode="viewport"
 Enemies=""
 Players=""
 Ladder=""
+Creatures=""
 
 [input]
 

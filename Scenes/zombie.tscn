@@ -59,7 +59,7 @@ height = 20.0
 radius = 8.0
 height = 22.0
 
-[node name="Zombie" type="CharacterBody2D" groups=["Enemies"]]
+[node name="Zombie" type="CharacterBody2D" groups=["Creatures", "Enemies"]]
 position = Vector2(0, -2)
 script = ExtResource("1_i5o7v")
 metadata/_edit_group_ = true
