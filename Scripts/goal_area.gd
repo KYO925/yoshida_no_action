@@ -14,4 +14,6 @@ func _process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	ScoreManager.set_next_stage(next_stage_num)
+	if body.is_in_group("Players"):
+		ScoreManager.set_next_stage(next_stage_num)
+		get_tree().change_scene_to_packed(ScoreManager.stage_number_scene)

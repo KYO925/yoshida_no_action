@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=4 uid="uid://ds7t7bksmphrm"]
+[gd_scene load_steps=7 format=4 uid="uid://ds7t7bksmphrm"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_n1y05"]
 [ext_resource type="PackedScene" uid="uid://biickaobpqsi2" path="res://Scenes/background.tscn" id="1_tpxhw"]
-[ext_resource type="PackedScene" uid="uid://mp0vidtsdimm" path="res://Scenes/stage_number_view.tscn" id="2_kupij"]
 [ext_resource type="TileSet" uid="uid://55fe2j7tn2vy" path="res://main.tres" id="2_ppitn"]
 [ext_resource type="PackedScene" uid="uid://dhm72r0yoo6rm" path="res://Scenes/zombie.tscn" id="3_fpyx2"]
 [ext_resource type="PackedScene" uid="uid://kxl0km5o8gv2" path="res://Scenes/main_menu_yoshida.tscn" id="4_dgj0i"]
@@ -14,7 +13,6 @@ outline_color = Color(0, 0, 0, 1)
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_n1y05")
-stage_number_scene = ExtResource("2_kupij")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

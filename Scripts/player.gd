@@ -58,6 +58,7 @@ func death():
 	is_alive = false
 	is_on_ladder = false
 	sprite.play("death")
+	ScoreManager.reset_coins()
 
 
 func _on_hitbox_body_entered(body: Node2D) -> void:

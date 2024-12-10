@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://dp6dqxw7wfp4d"]
+
+[ext_resource type="Texture2D" uid="uid://r8toxy4tphgh" path="res://Sprites/props.png" id="1_wsnyx"]
+[ext_resource type="PackedScene" uid="uid://g672nht80l2i" path="res://Scenes/goal_area.tscn" id="2_8nhv1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wjp44"]
+atlas = ExtResource("1_wsnyx")
+region = Rect2(4, 225, 87, 108)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_31da6"]
+size = Vector2(3, 20)
+
+[node name="House" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_wjp44")
+
+[node name="GoalArea" parent="." instance=ExtResource("2_8nhv1")]
+position = Vector2(-9, 44)
+
+[node name="CollisionShape2D" parent="GoalArea" index="0"]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_31da6")
+
+[editable path="GoalArea"]

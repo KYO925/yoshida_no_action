@@ -1,6 +1,8 @@
 extends Node
 
 
+@export var stage_number_scene: PackedScene
+
 var coins = 0
 var current_stage = 1
 var main_menu_path = "res://Scenes/main_menu.tscn"
@@ -22,3 +24,7 @@ func add_coins(n=1):
 
 func set_next_stage(n):
 	current_stage = n
+
+
+func reset_coins():
+	coins = 0
